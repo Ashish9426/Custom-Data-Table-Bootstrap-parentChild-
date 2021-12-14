@@ -1,0 +1,84 @@
+<!-- <div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th *ngFor="let c of colHeaderChild"  [ngClass]=c.color>{{c.col}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of dataChild">
+                <td >{{emp.id}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.salary}}</td>
+                <td ><a *ngFor="let icon of iconChild" href="#"><fa-icon [icon]="icon"></fa-icon></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+<!-- [ngClass]='emp.salary>=25000?styleChild[0]:styleChild[1]' -->
+
+
+<div class="container">
+    <table class="table table-hover">
+        <tbody>
+            <th *ngFor="let c of colHeaderChild; index as i" [ngClass]=c.color>{{c.col}}</th>
+            <tr *ngFor="let emp of dataChild; index as k ">
+                <td class={{colHeaderChild[0].color}}>{{emp.id}}
+                    <ng-container *ngIf="colHeaderChild[0].type=='icon'">
+                        <a *ngFor="let icon of colHeaderChild[0].icons">
+                            <fa-icon [icon]="icon"></fa-icon>
+                        </a>
+                    </ng-container>
+                </td>
+                <td class={{colHeaderChild[1].color}}>{{emp.name}}
+                    <ng-container *ngIf="colHeaderChild[1].type=='icon'">
+                        <a *ngFor="let icon of colHeaderChild[1].icons">
+                            <fa-icon [icon]="icon"></fa-icon>
+                        </a>
+                    </ng-container>
+                </td>
+                <td class={{colHeaderChild[2].color}}>{{emp.age}}
+                    <ng-container *ngIf="colHeaderChild[2].type=='icon'">
+                        <a *ngFor="let icon of colHeaderChild[2].icons">
+                            <fa-icon [icon]="icon"></fa-icon>
+                        </a>
+                    </ng-container>
+                </td>
+                <td class={{colHeaderChild[3].color}}>{{emp.salary}}
+                    <ng-container *ngIf="colHeaderChild[3].type=='icon'">
+                        <a *ngFor="let icon of colHeaderChild[3].icons">
+                            <fa-icon [icon]="icon"></fa-icon>
+                        </a>
+                    </ng-container>
+                </td>
+                <td class={{colHeaderChild[4].color}}><a *ngFor="let icon of colHeaderChild[4].icons">
+                        <fa-icon [icon]="icon"></fa-icon>
+                    </a></td>
+
+
+                <!-- <td class={{colHeaderChild[4].color}}><a *ngFor="let icon of iconChild" href="#"><fa-icon [icon]="icon"></fa-icon></a></td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<!-- <div class="container">
+    <table class="table table-hover">
+        <tbody>
+            <th *ngFor="let c of colHeaderChild; index as i" [ngClass]=c.color>{{c.col}}</th>
+            <tr *ngFor="let emp of dataChild; index as k ">
+                    <td *ngFor="let e of emp|keyvalue ; index as x" >{{e.value}}
+                        <ng-container *ngIf="colHeaderChild[x].type=='icon'">
+                            <a *ngFor="let icon of colHeaderChild[x].icons">
+                                <fa-icon [icon]="icon"></fa-icon>
+                            </a>
+                        </ng-container>
+                       
+                    </td>
+        </tbody>
+    </table>
+</div> -->
