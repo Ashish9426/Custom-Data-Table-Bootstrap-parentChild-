@@ -1,21 +1,24 @@
-
+<!-- dynamic row and column data and color and icons -->
 <div class="container">
     <table class="table table-hover">
+        <thead>
+            <tr>
+                <th *ngFor="let c of colHeaderChild" [ngClass]="c.headerClass">{{c.col}}</th>
+            </tr>
+        </thead>
         <tbody>
-            <th *ngFor="let c of colHeaderChild; index as i" [ngClass]="c.color">{{c.col}}</th>
-            <tr *ngFor="let emp of dataChild; index as k ">
-                <td *ngFor="let e of emp | keyvalue; index as x" ngClass={{colHeaderChild[x].color}}>
-                    
-                    <ng-container *ngIf="colHeaderChild[x].type=='text'">
-                        {{e.value}}
+            <tr *ngFor="let emp of dataChild">
+                <td *ngFor="let c of colHeaderChild; index as i" [ngClass]="c.cellClass">
+                    <ng-container *ngIf="colHeaderChild[i].type=='text'">
+                        {{emp[c.col]}}
                     </ng-container>
-                    
-                    <ng-container *ngIf="colHeaderChild[x].type=='input'">
-                        <input matInput placeholder="Enter text">
+
+                    <ng-container *ngIf="colHeaderChild[i].type=='input'">
+                        <input type="number" placeholder="Enter text">
                     </ng-container>
-                    
-                    <ng-container *ngIf="colHeaderChild[x].type=='icon'">
-                        <a *ngFor="let icon of colHeaderChild[x].icons">
+
+                    <ng-container *ngIf="colHeaderChild[i].type=='icon'">
+                        <a *ngFor="let icon of colHeaderChild[i].icons">
                             <fa-icon [icon]="icon"></fa-icon>
                         </a>
                     </ng-container>
@@ -26,6 +29,51 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- working code dynamic row and column -->
+<!-- 
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th *ngFor="let c of colHeaderChild" [ngClass]="c.color">{{c.col}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of dataChild">
+                <td *ngFor="let c of colHeaderChild; index as i" ngClass={{colHeaderChild[i].color}}>
+                    <ng-container *ngIf="colHeaderChild[i].type=='text'">
+                        {{emp[c.col]}}
+                    </ng-container>
+
+                    <ng-container *ngIf="colHeaderChild[i].type=='input'">
+                        <input placeholder="Enter text">
+                    </ng-container>
+
+                    <ng-container *ngIf="colHeaderChild[i].type=='icon'">
+                        <a *ngFor="let icon of colHeaderChild[i].icons">
+                            <fa-icon [icon]="icon"></fa-icon>
+                        </a>
+                    </ng-container>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
 
 
 
@@ -90,15 +138,15 @@
 </div> -->
 
 
-<!-- working -->
-<div class="container">
+<!-- working code -->
+<!-- <div class="container">
     <table class="table table-hover">
         <tbody>
             <th *ngFor="let c of colHeaderChild; index as i" [ngClass]="c.color">{{c.col}}</th>
             <tr *ngFor="let emp of dataChild; index as k ">
                 <td class={{colHeaderChild[0].color}}>
                     <ng-container *ngIf="colHeaderChild[0].type=='text'">
-                        {{emp.id}}
+                        {{emp.EmpId}}
                     </ng-container>
                     <ng-container *ngIf="colHeaderChild[0].type=='input'">
                         <input matInput placeholder="Enter text">
@@ -110,7 +158,7 @@
 
                 <td class={{colHeaderChild[1].color}}>
                     <ng-container *ngIf="colHeaderChild[1].type=='text'">
-                        {{emp.name}}
+                        {{emp.Name}}
                     </ng-container>
                     <ng-container *ngIf="colHeaderChild[1].type=='input'">
                         <input matInput placeholder="Enter text">
@@ -122,7 +170,7 @@
 
                 <td class={{colHeaderChild[2].color}}>
                     <ng-container *ngIf="colHeaderChild[2].type=='text'">
-                        {{emp.age}}
+                        {{emp.Age}}
                     </ng-container>
                     <ng-container *ngIf="colHeaderChild[2].type=='input'">
                         <input matInput placeholder="Enter text">
@@ -134,7 +182,7 @@
 
                 <td class={{colHeaderChild[3].color}}>
                     <ng-container *ngIf="colHeaderChild[3].type=='text'">
-                        {{emp.salary}}
+                        {{emp.Salary}}
                     </ng-container>
                     <ng-container *ngIf="colHeaderChild[3].type=='input'">
                         <input matInput placeholder="Enter text">
@@ -158,4 +206,47 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div> -->
+
+<!-- working code -->
+<!-- <div class="container">
+    <table class="table table-hover">
+        <tbody>
+            <th *ngFor="let c of colHeaderChild" [ngClass]="c.color">{{c.col}}</th>
+            <tr *ngFor="let emp of dataChild">
+                <td *ngFor="let c of colHeaderChild; index as i" ngClass={{colHeaderChild[i].color}}>
+                    <ng-container *ngIf="colHeaderChild[i].type=='text'">
+                        {{emp[c.col]}}
+                    </ng-container>
+
+                    <ng-container *ngIf="colHeaderChild[i].type=='input'">
+                        <input matInput placeholder="Enter text">
+                    </ng-container>
+
+                    <ng-container *ngIf="colHeaderChild[i].type=='icon'">
+                        <a *ngFor="let icon of colHeaderChild[i].icons">
+                            <fa-icon [icon]="icon"></fa-icon>
+                        </a>
+                    </ng-container>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+
+
+<!-- reference -->
+<!-- <div class="container">
+   
+    <a
+        href="https://stackoverflow.com/questions/43864288/how-to-set-table-heading-dynamically-in-angular-2">https://stackoverflow.com/questions/43864288/how-to-set-table-heading-dynamically-in-angular-2
+    </a>
+    <a
+        href=" https://stackoverflow.com/questions/38810318/dynamically-loading-columns-and-data-in-to-table-in-angular-2"> https://stackoverflow.com/questions/38810318/dynamically-loading-columns-and-data-in-to-table-in-angular-2
+    </a>
+    <a
+        href="https://stackoverflow.com/questions/23465835/how-to-use-ng-if-with-table-to-display-td-based-on-the-condition"> https://stackoverflow.com/questions/38810318/dynamically-loading-columns-and-data-in-to-table-in-angular-2
+    </a>
+
+</div> -->

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faTrash, faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faEye, faSearch, faAppleAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -7,35 +7,37 @@ import { faTrash, faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  faTrash=faTrash;
-  faEdit=faEdit;
-  faEye=faEye;
+  // faTrash=faTrash;
+  // faEdit=faEdit;
+  // faEye=faEye;
   
   // colHeaderParent = ["EmpId", "Name", "Salary", "Action"];
   // styleParent =  ["bg-success", "bg-warning"]
-  iconsParent = [faTrash, faEdit, faEye]
+  iconsParent = [faTrash, faEdit, faEye, faSearch, faAppleAlt]
 
   colHeaderParent = [
-    {col:"EmpId", color:"bg-success text-light",type:'text', icons:this.iconsParent},
-    {col:"Name", color:"bg-primary text-danger", type:'text', icons:this.iconsParent},
-    {col:"Age", color:"bg-secondary text-light", type:'input', icons:this.iconsParent},
-    {col:"Salary", color:"bg-info text-dark", type:'text', icons:this.iconsParent},
-    {col:"Action", color:"bg-warning text-danger", type:'icon', icons:this.iconsParent}
+                    {col:"EmpId", color:"bg-success",type:'icon', headerClass:"bg-success", cellClass:"bg-info", icons:this.iconsParent},
+                    {col:"Name", color:"bg-primary ", type:'text', headerClass:"bg-primary", cellClass:"bg-secondary", icons:this.iconsParent},
+                    {col:"Age", color:"bg-secondary ", type:'input', headerClass:"bg-secondary ", cellClass:"bg-warning", icons:this.iconsParent},
+                    {col:"Salary", color:"bg-info ", type:'text', headerClass:"bg-info", cellClass:"bg-primary", icons:this.iconsParent},
+                    {col:"Action", color:"bg-warning ", type:'icon', headerClass:"bg-warning", cellClass:"bg-success", icons:this.iconsParent}
+                  ];
+                  // accessor:xyz.salary,
+
+  employeeParent = [
+    {EmpId:1, Name:"Ashish", Salary:15000, Age:21},
+    {EmpId:2, Name:"Shiva", Salary:23000, Age:23},
+    {EmpId:3, Name:"Anu", Salary:35000, Age:35},
+    {EmpId:4, Name:"Shubh", Salary:45000, Age:42},
+    {EmpId:5, Name:"Kritika", Salary:85000, Age:25},
+    {EmpId:6, Name:"Eva", Salary:27000, Age:26},
+    {EmpId:7, Name:"Amit", Salary:23000, Age:29},
+    {EmpId:8, Name:"Manish", Salary:40000, Age:32},
+    {EmpId:9, Name:"Sonal", Salary:45000, Age:30},
+    {EmpId:10, Name:"Kritika", Salary:85000, Age:29},
   ];
 
-employeeParent = [
-{id:1, name:"Ashish", salary:15000, age:21, action:""},
-{id:2, name:"Shiva", salary:23000, age:23, action:""},
-{id:3, name:"Anu", salary:35000, age:35, action:""},
-{id:4, name:"Shubh", salary:45000, age:42, action:""},
-{id:5, name:"Kritika", salary:85000, age:25, action:""},
-{id:6, name:"Eva", salary:27000, age:26, action:""},
-{id:7, name:"Amit", salary:23000, age:29, action:""},
-{id:8, name:"Manish", salary:40000, age:32, action:""},
-{id:9, name:"Sonal", salary:45000, age:30, action:""},
-{id:10, name:"Kritika", salary:85000, age:29, action:""},
-];
-
+  // displayedColumns: any[] = this.colHeaderParent.map(col => col.col);
   constructor() { }
 
   ngOnInit(): void {
